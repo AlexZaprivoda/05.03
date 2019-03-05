@@ -130,8 +130,6 @@ document.addEventListener("mouseup", function({ target }) {
       li.classList.remove("active");
       if (element !== li.parentElement) {
         if (target.tagName == "LI"){
-          console.log(element)
-          console.log()
           element.insertBefore(li, target.nextElementSibling);
         } else element.appendChild(li);
       }
