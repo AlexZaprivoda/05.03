@@ -48,7 +48,7 @@
 // }
 
 // test2.addEventListener("mouseover", e => {
-//   // let {backgrounColor} = this.getBoundingClientRect();
+//   // let {backgrounColor} = this. 
 //   // test2.style.backgroundColor = "red";
 //   clearInterval(timerId2);
 
@@ -84,23 +84,38 @@
 // });
 
 //___________________________________________________________________________________________
-// let buff;
-document.addEventListener("mousedown", function({ target }) {
+let container = null;
+document.addEventListener("mousedown", function({target}) {
   if (target.hasAttribute("data-dnd")) {
-    // console.log(target);
     document.body.classList.add("move");
     target.classList.add("active");
-    // buff = target;
+
+    container = document.createElement("div");
+    container.classList.add("toMouse");
+    container.innerHTML = target.innerHTML;
+    document.body.appendChild(container);
   }
+  // console.log(e)
 });
 
+
+document.addEventListener("mousemove", ({ clientX, clientY }) => {
+  if (container) {
+    container.style.visibility = "visible";
+    container.style.left = `${clientX}px`;
+    container.style.top = `${clientY}px`;
+}
+});
+
+
 document.addEventListener("mouseup", function({ target }) {
-  // if (target.hasAttribute("data-dnd")) {
-  // console.log(target);
-  // console.log(buff);
-  // select.appendChild(buff);
   document.body.classList.remove("move");
 
+  if (container){
+    document.body.removeChild(container);
+    container = null;
+  }
+  
   let element = null;
 
   if (target.tagName === "LI") {
@@ -110,18 +125,18 @@ document.addEventListener("mouseup", function({ target }) {
   }
 
   if (element) {
-    console.log(element);
     const li = document.querySelector(".active");
     if (li) {
       li.classList.remove("active");
       if (element !== li.parentElement) {
-        element.appendChild(li);
+        if (target.tagName == "LI"){
+          console.log(element)
+          console.log()
+          element.insertBefore(li, target.nextElementSibling);
+        } else element.appendChild(li);
       }
     }
   }
 
-  // console.log(target);
-
-  // select.appendChild(buff);
-  // }
 });
+
