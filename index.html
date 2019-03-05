@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./index.js" defer></script>
+  </head>
+  <body>
+    <style>
+      #test {
+        width: 10px;
+        height: 10px;
+        background-color: red;
+      }
+      #test2 {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        position: relative;
+      }
+      section {
+        padding: 24px;
+        background-color: #ccc;
+      }
+      #load {
+        position: absolute;
+        left: 50%;
+        width: 50px;
+        height: 3px;
+        border: 1px solid;
+      }
+
+      #moveArea {
+        position: relative;
+      }
+
+      #toMouse {
+        position: absolute;
+        border: 1px solid;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: greenyellow;
+        transform: translate(5px, 5px);
+      }
+      ul {
+        min-height: 100px;
+        background: grey;
+      }
+
+      li {
+        user-select: none;
+      }
+
+      .move {
+        cursor: move;
+      }
+
+      .active {
+        border: 1px solid gold;
+      }
+    </style>
+    <!-- <div id="test"></div>
+    <br />
+
+    <section class="mouseover" id="moveArea">
+      <div id="test2"></div>
+      <div id="load"></div>
+      <div id="toMouse"></div>
+		</section> -->
+
+    <ul id="option">
+      <li data-dnd>point 1</li>
+      <li data-dnd>point 2</li>
+      <li data-dnd>point 3</li>
+      <li data-dnd>point 4</li>
+      <li data-dnd>point 5</li>
+    </ul>
+    <ul id="select">
+      <li data-dnd>point 0</li>
+    </ul>
+  </body>
+</html>
